@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import "./App.css";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import Navbar from "./Navbar";
 
 function App() {
   const sections = {
@@ -10,6 +11,7 @@ function App() {
     projects: useRef(null),
     skills: useRef(null),
     contact: useRef(null),
+    location: useRef(null),
   };
 
   const scrollToSection = (section) => {
@@ -64,116 +66,292 @@ function App() {
 
   return (
     <div className="portfolio">
-      <nav className="navbar">
-        <h1 className="nav-logo" onClick={() => scrollToSection("about")}>
-          Nicholas Vioral
-        </h1>
-        <ul>
-          {Object.keys(sections).map((key) => (
-            <li key={key} onClick={() => scrollToSection(key)}>
-              {key.charAt(0).toUpperCase() + key.slice(1)}
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <section ref={sections.about} className="hero">
+      <Navbar scrollToSection={scrollToSection} />
+      
+      {/* Consolidated Profile Box */}
+      <section className="profile-box">
+        <div className="profile-header">
+          <div className="profile-social-icons">
+            <motion.a 
+              href="mailto:nicholasvioral@gmail.com"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaEnvelope />
+            </motion.a>
+            <motion.a 
+              href="https://github.com/NicholasVioral" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaGithub />
+            </motion.a>
+            <motion.a 
+              href="https://linkedin.com/in/nicholasvioral/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaLinkedin />
+            </motion.a>
+          </div>
+        </div>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          className="profile-content"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.8 }}
         >
-          <h2>Hi, I’m Nicholas Vioral 👋</h2>
-          <p>
-            A passionate software developer focused on building clean, functional, and creative
-            applications using modern technologies.
+          <h1 className="profile-name">Nicholas Vioral</h1>
+          <div className="profile-location">
+            <FaMapMarkerAlt className="location-icon" />
+            <span>Pennsylvania, USA</span>
+          </div>
+          <p className="profile-description">
+            I'm a passionate Full-Stack Software Developer with a Bachelor's degree in Computer Science. 
+            I have been programming for several years and create professional, functional applications 
+            using modern technologies and best practices.
           </p>
-          <div className="hero-links">
-            <a href="mailto:nicholasvioral@gmail.com">
-              <FaEnvelope /> Email
-            </a>
-            <a href="https://linkedin.com/in/nicholasvioral/" target="_blank">
-              <FaLinkedin /> LinkedIn
-            </a>
-            <a href="https://github.com/NicholasVioral" target="_blank">
-              <FaGithub /> GitHub
-            </a>
+        </motion.div>
+      </section>
+
+      {/* What I Work With Section */}
+      <section className="technologies-section">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="technologies-content"
+        >
+          <h2 className="technologies-title">What I Work With</h2>
+          
+          {/* Languages */}
+          <div className="tech-category">
+            <h3>Languages</h3>
+            <div className="scrolling-tech">
+              <div className="scrolling-tech-inner">
+                {["Java", "Python", "C/C++", "SQL", "JavaScript", "HTML/CSS"].map((tech, index) => (
+                  <motion.span
+                    key={tech}
+                    className="tech-item"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+                {/* Duplicate for seamless loop */}
+                {["Java", "Python", "C/C++", "SQL", "JavaScript", "HTML/CSS"].map((tech, index) => (
+                  <motion.span
+                    key={`${tech}-dup`}
+                    className="tech-item"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Frameworks */}
+          <div className="tech-category">
+            <h3>Frameworks</h3>
+            <div className="scrolling-tech reverse">
+              <div className="scrolling-tech-inner">
+                {["React", "Node.js", "Express", "Spring Boot"].map((tech, index) => (
+                  <motion.span
+                    key={tech}
+                    className="tech-item"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+                {/* Duplicate for seamless loop */}
+                {["React", "Node.js", "Express", "Spring Boot"].map((tech, index) => (
+                  <motion.span
+                    key={`${tech}-dup`}
+                    className="tech-item"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Tools */}
+          <div className="tech-category">
+            <h3>Tools</h3>
+            <div className="scrolling-tech">
+              <div className="scrolling-tech-inner">
+                {["Git", "GitHub", "VS Code", "Visual Studio", "Firebase (Authentication, Realtime DB)"].map((tech, index) => (
+                  <motion.span
+                    key={tech}
+                    className="tech-item"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+                {/* Duplicate for seamless loop */}
+                {["Git", "GitHub", "VS Code", "Visual Studio", "Firebase (Authentication, Realtime DB)"].map((tech, index) => (
+                  <motion.span
+                    key={`${tech}-dup`}
+                    className="tech-item"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Databases */}
+          <div className="tech-category">
+            <h3>Databases</h3>
+            <div className="scrolling-tech reverse">
+              <div className="scrolling-tech-inner">
+                {["SQLite"].map((tech, index) => (
+                  <motion.span
+                    key={tech}
+                    className="tech-item"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+                {/* Duplicate for seamless loop */}
+                {["SQLite"].map((tech, index) => (
+                  <motion.span
+                    key={`${tech}-dup`}
+                    className="tech-item"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
 
-      <section ref={sections.education} className="section">
-        <motion.div initial={{ x: -50, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
-          <h2>Education</h2>
-          <h3>Slippery Rock University</h3>
-          <p>Bachelor of Science in Computer Science | August 2020 - May 2024</p>
-          <p><strong>GPA:</strong> 3.59</p>
-          <ul>
-            <li>Software Engineering — project management & collaboration.</li>
-            <li>Artificial Intelligence — machine learning, NLP, computer vision.</li>
-            <li>Data Structures & Algorithms — efficient problem-solving fundamentals.</li>
-          </ul>
-        </motion.div>
-      </section>
+      {/* Rest of your content */}
+      <div className="main-content">
+        <section ref={sections.about} className="section">
+          <motion.div initial={{ x: -50, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
+            <h2>About Me</h2>
+            <p>
+              A passionate software developer focused on building clean, functional, and creative
+              applications using modern technologies. I enjoy solving complex problems and 
+              continuously learning new technologies to enhance my skills.
+            </p>
+          </motion.div>
+        </section>
 
-      <section ref={sections.projects} className="section">
-        <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-          Projects
-        </motion.h2>
-        <div className="projects-container">
-          {projects.map((proj, i) => (
-            <motion.div
-              key={i}
-              className="project-card"
-              whileHover={{ scale: 1.05 }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3>{proj.title}</h3>
-              <p className="tech">{proj.tech}</p>
-              <p>{proj.description}</p>
-              <div className="buttons">
-                <a href={proj.github} target="_blank">GitHub</a>
-                <a href={proj.live} target="_blank">Live Demo</a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+        <section ref={sections.education} className="section">
+          <motion.div initial={{ x: -50, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
+            <h2>Education</h2>
+            <h3>Slippery Rock University</h3>
+            <p>Bachelor of Science in Computer Science | August 2020 - May 2024</p>
+            <p><strong>GPA:</strong> 3.59</p>
+            <ul>
+              <li>Software Engineering — project management & collaboration.</li>
+              <li>Artificial Intelligence — machine learning, NLP, computer vision.</li>
+              <li>Data Structures & Algorithms — efficient problem-solving fundamentals.</li>
+            </ul>
+          </motion.div>
+        </section>
 
-      <section ref={sections.skills} className="section">
-        <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }}>
-          Technical Skills
-        </motion.h2>
-        <motion.ul className="skills-list">
-          {skills.map((skill, i) => (
-            <motion.li
-              key={i}
-              whileHover={{ scale: 1.1 }}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.03 }}
-            >
-              {skill}
-            </motion.li>
-          ))}
-        </motion.ul>
-      </section>
+        <section ref={sections.projects} className="section">
+          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+            Projects
+          </motion.h2>
+          <div className="projects-container">
+            {projects.map((proj, i) => (
+              <motion.div
+                key={i}
+                className="project-card"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h3>{proj.title}</h3>
+                <p className="tech">{proj.tech}</p>
+                <p>{proj.description}</p>
+                <div className="buttons">
+                  <a href={proj.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+                  <a href={proj.live} target="_blank" rel="noopener noreferrer">Live Demo</a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
-      <section ref={sections.contact} className="section contact">
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-          <h2>Get In Touch</h2>
-          <p>Interested in collaborating or want to know more? Reach out!</p>
-          <a href="mailto:nicholasvioral@gmail.com" className="contact-button">
-            Say Hello 👋
-          </a>
-        </motion.div>
-      </section>
+        <section ref={sections.skills} className="section">
+          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+            Technical Skills
+          </motion.h2>
+          <motion.ul className="skills-list">
+            {skills.map((skill, i) => (
+              <motion.li
+                key={i}
+                whileHover={{ scale: 1.1 }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.03 }}
+              >
+                {skill}
+              </motion.li>
+            ))}
+          </motion.ul>
+        </section>
 
-      <footer>
-        <p>© 2025 Nicholas Vioral. All rights reserved.</p>
-      </footer>
+        <section ref={sections.location} className="section">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+            <h2>
+              <FaMapMarkerAlt style={{ marginRight: '10px' }} />
+              Location
+            </h2>
+            <p><strong>Based in:</strong> Pennsylvania, USA</p>
+            <p><strong>Open to:</strong> Remote positions & relocation opportunities</p>
+            <div className="location-info">
+              <p>📍 Available for software development roles nationwide</p>
+              <p>🌎 Willing to relocate for the right opportunity</p>
+              <p>💻 Remote work ready with professional setup</p>
+            </div>
+          </motion.div>
+        </section>
+
+        <section ref={sections.contact} className="section contact">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+            <h2>Get In Touch</h2>
+            <p>Interested in collaborating or want to know more? Reach out!</p>
+            <a href="mailto:nicholasvioral@gmail.com" className="contact-button">
+              Say Hello 👋
+            </a>
+          </motion.div>
+        </section>
+
+        <footer>
+          <p>© 2025 Nicholas Vioral. All rights reserved.</p>
+        </footer>
+      </div>
     </div>
   );
 }
