@@ -1,50 +1,48 @@
 // Navbar.js
 import { motion } from "framer-motion";
-import "./Navbar.css";
+import { Link } from "react-router-dom";
+import "../Navbar.css";
 
-function Navbar({ scrollToSection }) {
+function Navbar() {
   return (
     <nav className="navbar">
       <motion.h1 
-        className="nav-logo" 
-        onClick={() => scrollToSection("about")}
+        className="nav-logo"
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        Nicholas Vioral
+        <Link to="/" className="nav-link">Nicholas Vioral</Link>
       </motion.h1>
       
       <ul className="nav-links">
         <motion.li 
-          onClick={() => scrollToSection("about")}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          About Me
+          <Link to="/about" className="nav-link">About Me</Link>
         </motion.li>
+
         <motion.li 
-          onClick={() => scrollToSection("projects")}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          My Projects
+          <Link to="/" className="nav-link">My Projects</Link>
         </motion.li>
+
         <motion.li 
-          onClick={() => scrollToSection("contact")}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          Contact Me
+          <Link to="/" className="nav-link">Contact Me</Link>
         </motion.li>
       </ul>
-      
+
       <motion.div 
         className="nav-location"
-        onClick={() => scrollToSection("location")}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        Location
+        <Link to="/" className="nav-link">Location</Link>
       </motion.div>
     </nav>
   );
