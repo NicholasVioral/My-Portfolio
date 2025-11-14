@@ -1,7 +1,26 @@
+
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import "../App.css";
+
+// Profile icons
 import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+
+// Language icons
+import { FaJava, FaPython, FaJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { SiC, SiCplusplus, SiMysql } from "react-icons/si";
+
+// Framework icons
+import { FaReact, FaNodeJs } from "react-icons/fa";
+import { SiExpress, SiSpringboot } from "react-icons/si";
+
+// Tools icons
+import { FaGitAlt, FaMicrosoft, FaCode } from "react-icons/fa";
+import { SiFirebase } from "react-icons/si";
+
+// Database icons
+import { SiSqlite } from "react-icons/si";
+
 import bookranker from "../bookranker.JPG";
 import ebayclone from "../ebayclonenew.JPG";
 import riotstats from "../riotstatstracker.JPG";
@@ -20,51 +39,42 @@ function App() {
     sections[section].current.scrollIntoView({ behavior: "smooth" });
   };
 
-  const projects = [
-    {
-      title: "Online Auction",
-      tech: "HTML, CSS, JavaScript, Thymeleaf, Java",
-      description:
-        "Collaborated in a team to enhance an existing Online Auction site using Java and Spring Boot, fixing bugs, implementing authentication, product listings, and messaging features.",
-      github: "#",
-      live: "#",
-    },
-    {
-      title: "Book Ranking System",
-      tech: "Python, SQLite, SQL, CSV, Web Scraping (Requests)",
-      description:
-        "Developed a Python scraper for Goodreads data, organizing 2000+ book entries in SQLite. Automated filtering, deduplication, and review-based data cleaning.",
-      github: "#",
-      live: "#",
-    },
-    {
-      title: "League of Legends Performance Tracker",
-      tech: "React, Firebase, Node.js, Express, Riot API",
-      description:
-        "Built a personal dashboard to analyze match data and performance metrics using Riot API, with Firebase authentication and note tagging by skill category.",
-      github: "#",
-      live: "#",
-    },
-  ];
+  // Icon mapping for technologies
+  const languageIcons = {
+    Java: <FaJava />,
+    Python: <FaPython />,
+    "C/C++": (
+      <span className="flex items-center gap-1">
+        <SiC /> <SiCplusplus />
+      </span>
+    ),
+    SQL: <SiMysql />,
+    JavaScript: <FaJs />,
+    "HTML/CSS": (
+      <span className="flex items-center gap-1">
+        <FaHtml5 /> <FaCss3Alt />
+      </span>
+    ),
+  };
 
-  const skills = [
-    "Java",
-    "Python",
-    "C/C++",
-    "SQL",
-    "JavaScript",
-    "HTML/CSS",
-    "React",
-    "Node.js",
-    "Express",
-    "Spring Boot",
-    "Git",
-    "GitHub",
-    "Firebase",
-    "SQLite",
-    "REST APIs",
-    "Riot Games API",
-  ];
+  const frameworkIcons = {
+    React: <FaReact />,
+    "Node.js": <FaNodeJs />,
+    Express: <SiExpress />,
+    "Spring Boot": <SiSpringboot />,
+  };
+
+  const toolIcons = {
+    Git: <FaGitAlt />,
+    GitHub: <FaGithub />,
+    "VS Code": <FaCode />,
+    "Visual Studio": <FaMicrosoft />,
+    "Firebase (Authentication, Realtime DB)": <SiFirebase />,
+  };
+
+  const databaseIcons = {
+    SQLite: <SiSqlite />,
+  };
 
   return (
     <div className="portfolio">
@@ -100,6 +110,7 @@ function App() {
             </motion.a>
           </div>
         </div>
+
         <motion.div
           className="profile-content"
           initial={{ opacity: 0, y: 20 }}
@@ -134,24 +145,25 @@ function App() {
             <h3>Languages</h3>
             <div className="scrolling-tech">
               <div className="scrolling-tech-inner">
-                {["Java", "Python", "C/C++", "SQL", "JavaScript", "HTML/CSS"].map((tech, index) => (
+                {["Java", "Python", "C/C++", "SQL", "JavaScript", "HTML/CSS"].map((tech) => (
                   <motion.span
                     key={tech}
-                    className="tech-item"
+                    className="tech-item flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {tech}
+                    {languageIcons[tech]} {tech}
                   </motion.span>
                 ))}
-                {["Java", "Python", "C/C++", "SQL", "JavaScript", "HTML/CSS"].map((tech, index) => (
+
+                {["Java", "Python", "C/C++", "SQL", "JavaScript", "HTML/CSS"].map((tech) => (
                   <motion.span
                     key={`${tech}-dup`}
-                    className="tech-item"
+                    className="tech-item flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {tech}
+                    {languageIcons[tech]} {tech}
                   </motion.span>
                 ))}
               </div>
@@ -163,24 +175,25 @@ function App() {
             <h3>Frameworks</h3>
             <div className="scrolling-tech reverse">
               <div className="scrolling-tech-inner">
-                {["React", "Node.js", "Express", "Spring Boot"].map((tech, index) => (
+                {["React", "Node.js", "Express", "Spring Boot"].map((tech) => (
                   <motion.span
                     key={tech}
-                    className="tech-item"
+                    className="tech-item flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {tech}
+                    {frameworkIcons[tech]} {tech}
                   </motion.span>
                 ))}
-                {["React", "Node.js", "Express", "Spring Boot"].map((tech, index) => (
+
+                {["React", "Node.js", "Express", "Spring Boot"].map((tech) => (
                   <motion.span
                     key={`${tech}-dup`}
-                    className="tech-item"
+                    className="tech-item flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {tech}
+                    {frameworkIcons[tech]} {tech}
                   </motion.span>
                 ))}
               </div>
@@ -192,24 +205,25 @@ function App() {
             <h3>Tools</h3>
             <div className="scrolling-tech">
               <div className="scrolling-tech-inner">
-                {["Git", "GitHub", "VS Code", "Visual Studio", "Firebase (Authentication, Realtime DB)"].map((tech, index) => (
+                {["Git", "GitHub", "VS Code", "Visual Studio", "Firebase (Authentication, Realtime DB)"].map((tech) => (
                   <motion.span
                     key={tech}
-                    className="tech-item"
+                    className="tech-item flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {tech}
+                    {toolIcons[tech]} {tech}
                   </motion.span>
                 ))}
-                {["Git", "GitHub", "VS Code", "Visual Studio", "Firebase (Authentication, Realtime DB)"].map((tech, index) => (
+
+                {["Git", "GitHub", "VS Code", "Visual Studio", "Firebase (Authentication, Realtime DB)"].map((tech) => (
                   <motion.span
                     key={`${tech}-dup`}
-                    className="tech-item"
+                    className="tech-item flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {tech}
+                    {toolIcons[tech]} {tech}
                   </motion.span>
                 ))}
               </div>
@@ -221,24 +235,25 @@ function App() {
             <h3>Databases</h3>
             <div className="scrolling-tech reverse">
               <div className="scrolling-tech-inner">
-                {["SQLite"].map((tech, index) => (
+                {["SQLite", "MySQL", "PostgreSQL", "MongoDB", "Firebase"].map((tech) => (
                   <motion.span
                     key={tech}
-                    className="tech-item"
+                    className="tech-item flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {tech}
+                    {databaseIcons[tech]} {tech}
                   </motion.span>
                 ))}
-                {["SQLite"].map((tech, index) => (
+
+                {["SQLite", "MySQL", "PostgreSQL", "MongoDB", "Firebase"].map((tech) => (
                   <motion.span
                     key={`${tech}-dup`}
-                    className="tech-item"
+                    className="tech-item flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {tech}
+                    {databaseIcons[tech]} {tech}
                   </motion.span>
                 ))}
               </div>
@@ -331,7 +346,7 @@ function App() {
             </motion.a>
             
             <motion.a 
-              href="https://linkedin.com/in/nicholasvioral/" 
+              href="https://www.linkedin.com/in/nicholas-vioral-a0400b24b/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="contact-link"
@@ -359,15 +374,6 @@ function App() {
               <span>Pennsylvania, USA</span>
             </div>
           </div>
-          
-          <motion.a 
-            href="mailto:nicholasvioral@gmail.com" 
-            className="contact-button"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Say Hello 👋
-          </motion.a>
         </motion.div>
       </section>
     </div>
