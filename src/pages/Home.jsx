@@ -19,7 +19,7 @@ import { FaGitAlt, FaMicrosoft, FaCode } from "react-icons/fa";
 import { SiFirebase } from "react-icons/si";
 
 // Database icons
-import { SiSqlite } from "react-icons/si";
+import { SiSqlite, SiPostgresql, SiMongodb} from "react-icons/si";
 
 import bookranker from "../bookranker.JPG";
 import ebayclone from "../ebayclonenew.JPG";
@@ -74,7 +74,12 @@ function App() {
 
   const databaseIcons = {
     SQLite: <SiSqlite />,
+    MySQL: <SiMysql />,
+    PostgreSQL: <SiPostgresql />,
+    MongoDB: <SiMongodb />,
+    Firebase: <SiFirebase />,
   };
+
 
   return (
     <div className="portfolio">
@@ -200,36 +205,6 @@ function App() {
             </div>
           </div>
 
-          {/* Tools */}
-          <div className="tech-category">
-            <h3>Tools</h3>
-            <div className="scrolling-tech">
-              <div className="scrolling-tech-inner">
-                {["Git", "GitHub", "VS Code", "Visual Studio", "Firebase (Authentication, Realtime DB)"].map((tech) => (
-                  <motion.span
-                    key={tech}
-                    className="tech-item flex items-center gap-2"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {toolIcons[tech]} {tech}
-                  </motion.span>
-                ))}
-
-                {["Git", "GitHub", "VS Code", "Visual Studio", "Firebase (Authentication, Realtime DB)"].map((tech) => (
-                  <motion.span
-                    key={`${tech}-dup`}
-                    className="tech-item flex items-center gap-2"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {toolIcons[tech]} {tech}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
-          </div>
-
           {/* Databases */}
           <div className="tech-category">
             <h3>Databases</h3>
@@ -270,33 +245,42 @@ function App() {
           transition={{ duration: 0.8 }}
           className="projects-content"
         >
-          <h2 className="projects-title">Projects</h2>
+          <h2 className="projects-title">My Work</h2>
 
           <div className="projects-list">
             {[
               {
                 name: "Book Ranker",
                 img: bookranker,
-                tech: "Python, SQLite, Web Scraping",
+                tech: [
+                  { name: "Python", icon: <FaPython className="tech-icon" /> },
+                  { name: "SQLite", icon: <SiSqlite className="tech-icon" /> },
+                  { name: "Web Scraping", icon: <FaCode className="tech-icon" /> }
+                ],
                 link: "https://github.com/NicholasVioral/GoodreadsScraper",
-                description:
-                  "Scraped and organized 2000+ Goodreads entries using Python, filtering and storing book data in SQLite for ranking and analysis.",
+                description: "Scraped and organized 2000+ Goodreads entries using Python, filtering and storing book data in SQLite for ranking and analysis.",
               },
               {
                 name: "Riot Stats Tracker",
                 img: riotstats,
-                tech: "React, Firebase, Riot API",
+                tech: [
+                  { name: "React", icon: <FaReact className="tech-icon" /> },
+                  { name: "Firebase", icon: <SiFirebase className="tech-icon" /> },
+                  { name: "Riot API", icon: <FaCode className="tech-icon" /> }
+                ],
                 link: "https://github.com/NicholasVioral/Riot-Stats",
-                description:
-                  "Built a dashboard to track League of Legends performance with real-time match stats, Firebase authentication, and note tagging.",
+                description: "Built a dashboard to track League of Legends performance with real-time match stats, Firebase authentication, and note tagging.",
               },
               {
                 name: "eBay Clone",
                 img: ebayclone,
-                tech: "Java, Spring Boot, Thymeleaf, SQL",
+                tech: [
+                  { name: "Java", icon: <FaJava className="tech-icon" /> },
+                  { name: "Spring Boot", icon: <SiSpringboot className="tech-icon" /> },
+                  { name: "SQL", icon: <SiMysql className="tech-icon" /> }
+                ],
                 link: "https://github.com/NicholasVioral/eBay-Clone",
-                description:
-                  "Developed a Spring Boot e-commerce site with product listings, messaging, and authentication features, improving overall functionality.",
+                description: "Developed a Spring Boot e-commerce site with product listings, messaging, and authentication features, improving overall functionality.",
               },
             ].map((project, index) => (
               <motion.a
@@ -311,7 +295,14 @@ function App() {
                 <img src={project.img} alt={project.name} className="project-image" />
                 <div className="project-info">
                   <h3>{project.name}</h3>
-                  <p>{project.tech}</p>
+                  <div className="project-tech">
+                    {project.tech.map((techItem, techIndex) => (
+                      <div key={techIndex} className="tech-item">
+                        {techItem.icon}
+                        <span>{techItem.name}</span>
+                      </div>
+                    ))}
+                  </div>
                   <p className="project-description">{project.description}</p>
                   <button className="learn-more-btn">Learn More</button>
                 </div>
