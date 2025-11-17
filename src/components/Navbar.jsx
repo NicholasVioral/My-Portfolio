@@ -20,11 +20,11 @@ function Navbar() {
         </motion.li>
 
         <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-          <Link to="/" className="nav-link">My Projects</Link>
+          <Link to="/projects" className="nav-link">My Projects</Link>
         </motion.li>
 
         <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-          <Link to="/" className="nav-link">Contact Me</Link>
+          <Link to="/contact" className="nav-link">Contact Me</Link>
         </motion.li>
       </ul>
 
@@ -33,7 +33,7 @@ function Navbar() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <Link to="/" className="nav-link">Location</Link>
+        <Link to="/" className="nav-link">Butler, Pennsylvania</Link>
       </motion.div>
 
     </div>

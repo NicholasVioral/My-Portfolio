@@ -647,7 +647,7 @@ footer {
   background: transparent;
   margin: var(--spacing-lg) auto;
   max-width: 800px;
-  padding: var(--spacing-xl) var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-lg);
   border-radius: 0;
   box-shadow: none;
   border: none;
@@ -812,8 +812,6 @@ footer {
 }
 
 /* ===== PROJECTS SECTION ===== */
-
-
 .projects-content {
   max-width: 900px; /* Increased to accommodate wider cards */
   margin: 0 auto;
