@@ -24,6 +24,7 @@ import { SiSqlite, SiPostgresql, SiMongodb} from "react-icons/si";
 import bookranker from "../bookranker.JPG";
 import ebayclone from "../ebayclonenew.JPG";
 import riotstats from "../riotstatstracker.JPG";
+import movieranker from "../movieranker.JPG";
 
 function App() {
   const sections = {
@@ -250,15 +251,16 @@ function App() {
           <div className="projects-list">
             {[
               {
-                name: "Book Ranker",
-                img: bookranker,
+                name: "Movie Ranker",
+                img: movieranker,
                 tech: [
-                  { name: "Python", icon: <FaPython className="tech-icon" /> },
-                  { name: "SQLite", icon: <SiSqlite className="tech-icon" /> },
-                  { name: "Web Scraping", icon: <FaCode className="tech-icon" /> }
+                  { name: "React", icon: <FaReact className="tech-icon" /> },
+                  { name: "Node.js", icon: <FaNodeJs className="tech-icon" /> },
+                  { name: "Express", icon: <SiExpress className="tech-icon" /> },
+                  { name: "SQLite", icon: <SiSqlite className="tech-icon" /> }
                 ],
-                link: "https://github.com/NicholasVioral/GoodreadsScraper",
-                description: "Scraped and organized 2000+ Goodreads entries using Python, filtering and storing book data in SQLite for ranking and analysis.",
+                link: "https://github.com/NicholasVioral/MovieRanker",
+                description: "Developed a full-stack web application for browsing, searching, and ranking movies using a custom scoring system with React frontend and Node.js/Express backend.",
               },
               {
                 name: "Riot Stats Tracker",
