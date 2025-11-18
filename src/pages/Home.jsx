@@ -24,7 +24,7 @@ import { SiSqlite, SiPostgresql, SiMongodb} from "react-icons/si";
 import bookranker from "../bookranker.JPG";
 import ebayclone from "../ebayclonenew.JPG";
 import riotstats from "../riotstatstracker.JPG";
-import movieranker from "../movieranker.JPG";
+import movieranker from "../movieranker2.JPG";
 
 function App() {
   const sections = {
@@ -259,7 +259,7 @@ function App() {
                   { name: "Express", icon: <SiExpress className="tech-icon" /> },
                   { name: "SQLite", icon: <SiSqlite className="tech-icon" /> }
                 ],
-                link: "https://github.com/NicholasVioral/MovieRanker",
+                link: "https://github.com/NicholasVioral/Movie-Ranker",
                 description: "Developed a full-stack web application for browsing, searching, and ranking movies using a custom scoring system with React frontend and Node.js/Express backend.",
               },
               {
