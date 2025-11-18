@@ -6,16 +6,18 @@ import { motion } from "framer-motion";
 import bookranker from '../bookranker.JPG';
 import riotstats from '../riotstatstracker.JPG';
 import ebayclone from '../ebayclonenew.JPG';
+import movieranker from '../movieranker2.JPG';
 
 
 function Projects() {
   const projects = [
     {
-      name: "Book Ranker",
-      img: bookranker,
-      tech: "Python, SQLite, Web Scraping",
-      link: "https://github.com/NicholasVioral/GoodreadsScraper",
-      description: "Scraped and organized 2000+ Goodreads entries using Python, filtering and storing book data in SQLite for ranking and analysis.",
+      name: "Movie Ranker",
+      img: movieranker,
+      tech: "React, Node.js, Express, SQLite",
+      link: "https://github.com/NicholasVioral/Movie-Ranker",
+      description:
+        "Developed a full-stack web application for browsing, searching, and ranking movies using a custom scoring system with React frontend and Node.js/Express backend.",
     },
     {
       name: "Riot Stats Tracker",
@@ -30,6 +32,13 @@ function Projects() {
       tech: "Java, Spring Boot, Thymeleaf, SQL",
       link: "https://github.com/NicholasVioral/eBay-Clone",
       description: "Developed a Spring Boot e-commerce site with product listings, messaging, and authentication features, improving overall functionality.",
+    },
+    {
+      name: "Book Ranker",
+      img: bookranker,
+      tech: "Python, SQLite, Web Scraping",
+      link: "https://github.com/NicholasVioral/GoodreadsScraper",
+      description: "Scraped and organized 2000+ Goodreads entries using Python, filtering and storing book data in SQLite for ranking and analysis.",
     },
   ];
 
