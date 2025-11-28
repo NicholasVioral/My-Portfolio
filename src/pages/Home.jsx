@@ -106,7 +106,7 @@ function App() {
               <FaGithub />
             </motion.a>
             <motion.a 
-              href="https://linkedin.com/in/nicholasvioral/" 
+              href="https://www.linkedin.com/in/nicholas-vioral-a0400b24b/"
               target="_blank" 
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
