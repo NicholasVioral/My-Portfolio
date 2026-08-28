@@ -95,8 +95,7 @@
 
   /* ── Animated background: particle constellation ──
         Dots drift slowly, link up with thin lines when close,
-        and lean toward the cursor. Pauses when the tab is hidden
-        and disables itself under prefers-reduced-motion.
+        and lean toward the cursor. Pauses when the tab is hidden.
   ── */
   function initBackgroundCanvas() {
     const canvas = document.getElementById('bg-canvas');
@@ -104,8 +103,6 @@
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const LINK_DIST   = 145;   // px between dots before a line is drawn
     const MOUSE_DIST  = 180;   // px radius of cursor influence
@@ -142,21 +139,6 @@
       const target = particleCount();
       while (particles.length < target) particles.push(makeParticle());
       particles.length = target;
-
-      // Changing canvas.width wipes the bitmap, so the static frame
-      // has to be repainted after every resize.
-      if (reduceMotion) drawStatic();
-    }
-
-    /* One still frame — used when the visitor prefers reduced motion */
-    function drawStatic() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + ACCENT + ', 0.6)';
-        ctx.fill();
-      });
     }
 
     function draw() {
@@ -240,9 +222,6 @@
 
     resize();
     window.addEventListener('resize', resize, { passive: true });
-
-    // Nothing should move for visitors who ask for reduced motion
-    if (reduceMotion) return;
 
     window.addEventListener('pointermove', e => {
       mouse.x = e.clientX;

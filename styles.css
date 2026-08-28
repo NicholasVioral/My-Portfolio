@@ -141,13 +141,6 @@ body > *:not(.bg-layer):not(.navbar) {
   background: radial-gradient(ellipse 90% 70% at 50% 50%, transparent 45%, rgba(13, 13, 13, 0.55) 100%);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .bg-orb,
-  .bg-grid {
-    animation: none;
-  }
-}
-
 .container {
   max-width: 1100px;
   margin: 0 auto;
