@@ -69,7 +69,7 @@ body > *:not(.bg-layer):not(.navbar) {
   top: -14vmax;
   left: -10vmax;
   background: radial-gradient(circle at 30% 30%, rgba(74, 222, 128, 0.55), transparent 68%);
-  animation: orb-drift-1 26s ease-in-out infinite alternate;
+  animation: orb-drift-1 14s ease-in-out infinite alternate;
 }
 
 .bg-orb--2 {
@@ -78,7 +78,7 @@ body > *:not(.bg-layer):not(.navbar) {
   bottom: -12vmax;
   right: -8vmax;
   background: radial-gradient(circle at 60% 40%, rgba(56, 189, 248, 0.42), transparent 68%);
-  animation: orb-drift-2 32s ease-in-out infinite alternate;
+  animation: orb-drift-2 18s ease-in-out infinite alternate;
 }
 
 .bg-orb--3 {
@@ -87,7 +87,7 @@ body > *:not(.bg-layer):not(.navbar) {
   top: 38%;
   left: 45%;
   background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.38), transparent 68%);
-  animation: orb-drift-3 38s ease-in-out infinite alternate;
+  animation: orb-drift-3 22s ease-in-out infinite alternate;
 }
 
 @keyframes orb-drift-1 {
@@ -115,7 +115,7 @@ body > *:not(.bg-layer):not(.navbar) {
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 0%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 0%, transparent 100%);
-  animation: grid-slide 18s linear infinite;
+  animation: grid-slide 9s linear infinite;
   will-change: transform;
 }
 
